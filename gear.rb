@@ -6,9 +6,14 @@ class Gear
   # specifying defaults using ||
 
   def initialize(args)
-    @chainring  = args.fetch(:chainring, 40)
-    @cog        = args[:cog] || 18
+    args = defaults.merge(args)
+    @chainring   = args[:chainring]
+    @cog         = args[:cog] 
     @wheel       = args[:wheel]
+  end
+
+  def defaults
+    { chainring: 40, cog: 18  }
   end
 
   def ratio
