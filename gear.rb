@@ -1,7 +1,7 @@
-require_relative 'wheel'
+# require_relative 'wheel'
 
 class Gear
-  attr_reader :chainring, :cog, :wheel
+  attr_reader :chainring, :cog
 
   # specifying defaults using ||
 
@@ -9,7 +9,6 @@ class Gear
     args = defaults.merge(args)
     @chainring   = args[:chainring]
     @cog         = args[:cog] 
-    @wheel       = args[:wheel]
   end
 
   def defaults
@@ -20,16 +19,11 @@ class Gear
     chainring / cog.to_f
   end
 
-  def gear_inches
+  def gear_inches(diameter)
     # tire goes around rim twice for diameter
-    ratio * wheel.diameter
+    ratio * diameter
   end
 end
-
-def wheel
-  @wheel ||= Wheel.new(rim, tire)
-end
-
 
 
 #   puts Gear.new(52, 11).ratio
