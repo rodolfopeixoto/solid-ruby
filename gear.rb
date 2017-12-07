@@ -6,7 +6,7 @@ class Gear
   # specifying defaults using ||
 
   def initialize(args)
-    @chainring  = args[:chainring] || 40
+    @chainring  = args.fetch(:chainring, 40)
     @cog        = args[:cog] || 18
     @wheel       = args[:wheel]
   end
